@@ -63,7 +63,7 @@ func (self *AverageTimer32) CalculatedValue() float64 {
 		return 0
 	}
 
-	calculatedValue := float64((currentTime.Sub(lastTime).Nanoseconds() / 1e6) / int64(currentBase-lastBase))
+	calculatedValue := float64(-(currentTime.Sub(lastTime).Nanoseconds() / 1e6) / int64(currentBase-lastBase))
 
 	self.lastTime = currentTime
 	self.lastBase = currentBase

@@ -10,7 +10,7 @@ type PerfHandler struct {
 	totalCalls      *perfcounters.NumberOfItems32
 	successfulCalls *perfcounters.NumberOfItems32
 	failedCalls     *perfcounters.NumberOfItems32
-	callsPerSec     *perfcounters.CountPerTimeInterval32
+	callsPerSec     *perfcounters.RateOfCountsPerSecond32
 	callLatency     *perfcounters.AverageTimer32
 }
 
@@ -21,7 +21,7 @@ func NewPerfHandler(telemetryName string) *PerfHandler {
 		totalCalls:      perfcounters.NewNumberOfItems32(),
 		successfulCalls: perfcounters.NewNumberOfItems32(),
 		failedCalls:     perfcounters.NewNumberOfItems32(),
-		callsPerSec:     perfcounters.NewCountPerTimeInterval32(),
+		callsPerSec:     perfcounters.NewRateOfCountsPerSecond32(),
 		callLatency:     perfcounters.NewAverageTimer32(),
 	}
 

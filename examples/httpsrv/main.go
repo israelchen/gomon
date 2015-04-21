@@ -6,6 +6,7 @@ import (
 	"golang.org/x/net/context"
 	"log"
 	"net/http"
+	"time"
 )
 
 var (
@@ -27,6 +28,7 @@ func main() {
 		// context. Nested telemetries can also be created and they will automatically attach
 		// themselves to the parent telemetry. Handlers can then traverse the telemetry tree
 		// to print the telemetry tree.
+		time.Sleep(100 * time.Millisecond)
 
 		if len(r.FormValue("error")) > 0 {
 			ctx.SetError(testError)
@@ -44,6 +46,7 @@ func main() {
 		// context. Nested telemetries can also be created and they will automatically attach
 		// themselves to the parent telemetry. Handlers can then traverse the telemetry tree
 		// to print the telemetry tree.
+		time.Sleep(150 * time.Millisecond)
 
 		if len(r.FormValue("result")) > 0 {
 			ctx.SetResult(r.FormValue("result"))
