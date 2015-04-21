@@ -148,7 +148,6 @@ func (self *Telemetry) Result() interface{} {
 }
 
 func (self *Telemetry) SetResult(result interface{}) {
-	util.Require(self.err == nil, "telemetry: error has already been set.")
 	self.result = result
 }
 
@@ -157,7 +156,6 @@ func (self *Telemetry) Error() error {
 }
 
 func (self *Telemetry) SetError(err error) {
-	util.Require(self.result == nil, "telemetry: result has already been set.")
 	self.err = err
 }
 

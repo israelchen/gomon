@@ -7,7 +7,6 @@ import (
 )
 
 type PerfHandler struct {
-	publishedMap    *expvar.Map
 	totalCalls      *perfcounters.NumberOfItems32
 	successfulCalls *perfcounters.NumberOfItems32
 	failedCalls     *perfcounters.NumberOfItems32
@@ -18,16 +17,15 @@ type PerfHandler struct {
 func NewPerfHandler(telemetryName string) *PerfHandler {
 	util.Require(len(telemetryName) > 0, "telemetry: telemetryName cannot be empty.")
 
-	m := expvar.NewMap(telemetryName)
-
 	handler := &PerfHandler{
-		publishedMap:    m,
 		totalCalls:      perfcounters.NewNumberOfItems32(),
 		successfulCalls: perfcounters.NewNumberOfItems32(),
 		failedCalls:     perfcounters.NewNumberOfItems32(),
 		callsPerSec:     perfcounters.NewCountPerTimeInterval32(),
 		callLatency:     perfcounters.NewAverageTimer32(),
 	}
+
+	m := expvar.NewMap(telemetryName)
 
 	m.Set("totalCalls", handler.totalCalls)
 	m.Set("successfulCalls", handler.successfulCalls)
